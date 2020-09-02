@@ -1,0 +1,69 @@
+﻿// Here's a very synthetic example for you to try.
+// You are given a  Rectangle   protocol and an extension method on it. Try to define a  SquareToRectangleAdapter   that adapts
+// the  Square   to the  Rectangle   interface.
+
+struct Square
+{
+  int side{ 0 };
+
+  explicit Square(const int side)
+    : side(side)
+  {
+  }
+};
+
+struct Rectangle
+{
+  virtual int width() const = 0;
+  virtual int height() const = 0;
+
+  int area() const
+  {
+    return width() * height();
+  }
+};
+
+struct SquareToRectangleAdapter : Rectangle
+{
+  SquareToRectangleAdapter(const Square& square)
+  {
+      w = square.side;
+      h = square.side;
+  }
+  virtual int width() const {
+      return w;
+  };
+  virtual int height() const {
+      return h;
+  };
+private:
+  int w, h;
+  
+};
+
+#include "gtest/gtest.h"
+
+//#include "helpers/iohelper.h"
+
+//#include "exercise.cpp"
+
+
+namespace
+{
+  class Evaluate : public testing::Test
+  {
+  };
+
+  TEST_F(Evaluate, SimpleTest)
+  {
+    Square sq{ 11 };
+    SquareToRectangleAdapter adapter{ sq };
+    ASSERT_EQ(121, adapter.area());
+  }
+}
+
+int main(int ac, char* av[])
+{
+  testing::InitGoogleTest(&ac, av);
+  return RUN_ALL_TESTS();
+}
