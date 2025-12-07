@@ -1,0 +1,7 @@
+.cache
+compile_commands.json
+copilot-instructions.md
+qrc_*.cpp
+.vscode
+**/qt6.xmllibrary/
+build/

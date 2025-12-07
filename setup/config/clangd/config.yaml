@@ -1,0 +1,27 @@
+Diagnostics:
+  ClangTidy:
+    Add: [cert-*,misra-*, modernize-*, performance-*, readability-*, fuchsia-trailing-return, misc-*, cppcoreguidelines-*, bugprone-*, clang-analyzer-*]
+    Remove: [
+      modernize-pass-by-value,misc-use-internal-linkage, readability-convert-member-functions-to-static, bugprone-easily-swappable-parameters,
+      readability-implicit-bool-conversion, modernize-use-trailing-return-type, misc-non-private-member-variables-in-classes,
+      cppcoreguidelines-owning-memory, modernize-use-nodiscard, readability-redundant-access-specifiers,readability-identifier-length,
+      modernize-use-auto, readability-isolate-declaration,cppcoreguidelines-non-private-member-variables-in-classes,
+      cppcoreguidelines-pro-type-reinterpret-cast, cppcoreguidelines-pro-bounds-constant-array-index,
+     ]
+    CheckOptions:
+      modernize-use-override.AllowOverrideAndFinal: true
+      cppcoreguidelines-explicit-virtual-functions.AllowOverrideAndFinal: true
+    # FastCheckFilter: None
+  UnusedIncludes: Strict
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+Hover:
+  ShowAKA: true
+Completion:
+  AllScopes: true
+Index:
+  Background: Build
+CompileFlags:
+  Add: [-Wall, -Wextra]
